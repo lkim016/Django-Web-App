@@ -1,0 +1,40 @@
+{% extends "alka/layout.html" %}
+{% block title %}
+Home
+{% endblock %}
+{% block content %}
+
+<h1>Delivery Customer Information</h1>
+
+{% if info_list  %}
+        <table class="table">
+            <thead>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Phone</th>
+                <th>Email</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for info in info_list %}
+                <tr>
+                    <td>{{ info.id }}</td>
+                    <td>{{ info.name }}</td>
+                    <td>{{ info.phone }}</td>
+                    <td> {{ info.email }} </td>
+            {% endfor %}
+            {% for add in address_list %}
+                    <td>{{ add.street }}</td>
+                    <td>{{ add.city }}</td>
+                    <td> {{ add.zip_code }} </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    {% else %}
+        <p>No messages have been logged. Use the <a href="{% url 'input' %}">Input Form</a>.</p>
+    {% endif %}
+
+{% endblock %}
+

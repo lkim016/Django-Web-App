@@ -1,0 +1,86 @@
+{% extends "alka/layout.html" %}
+{% block title %} Customer Input {% endblock %}
+{% block content %}
+
+<h1>Delivery Customer Input</h1>
+<form method="POST">
+{% csrf_token %}
+<div class="form-group row">
+    {% for field in in_form.visible_fields %}
+    <div class="col-xs-3">
+      {{ field.label_tag }}
+      {{ field }}
+    </div>
+    {% endfor %}
+</div>
+
+<div class="form-group row">
+    {% for field in add_form.visible_fields %}
+    <div class="col-xs-3">
+      {{ field.label_tag }}
+      {{ field }}
+    </div>
+    {% endfor %}
+</div>
+
+<button type="submit" class="save btn btn-default">Save</button>
+</form>
+
+{% endblock %}
+
+<!--
+ <h1>Delivery Customer Information</h1>
+  <div class="form-group row">
+        <div class="col-xs-3">
+          <label for="delivery-name">Name:</label>
+          <input class="form-control" id="delivery-name" type="text">
+        </div>
+        <div class="col-xs-3">
+          <label for="ex2">Phone:</label>
+          <input class="form-control" id="ex2" type="text">
+        </div>
+        <div class="col-xs-3">
+          <label for="ex2">Email:</label>
+          <input class="form-control" id="ex2" type="text">
+        </div>
+    </div>
+
+    <div class="form-group row">
+        <div class="col-xs-3">
+          <label for="ex2">Address:</label>
+          <input class="form-control" id="ex2" type="text">
+        </div>
+        <div class="col-xs-3">
+          <label for="ex2">City:</label>
+          <input class="form-control" id="ex2" type="text">
+        </div>
+        <div class="col-xs-3">
+          <label for="ex2">Zip:</label>
+          <input class="form-control" id="ex2" type="text">
+        </div>
+    </div>
+</div>
+<div class="container-fluid">
+        <h1>Delivery Customer Deposit</h1>
+        <div class="form-group row">
+              <div class="col-xs-3">
+                <label for="ex2">Quantity:</label>
+                <input class="form-control" id="ex2" type="text">
+              </div>
+              <div class="col-xs-3">
+                            <label for="sel1">Bottle Type:</label>
+                            <select class="form-control" id="sel1">
+                              <option>1</option>
+                              <option>2</option>
+                              <option>3</option>
+                              <option>4</option>
+                            </select>
+              </div>
+              <div class="col-xs-3">
+                <label for="ex2">Deposit:</label>
+                <input class="form-control" id="ex2" type="text">
+              </div>
+          </div>
+        -->
+
+        
