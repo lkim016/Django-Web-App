@@ -10,24 +10,27 @@ Home
         <table class="table">
             <thead>
             <tr>
-                <th>ID</th>
+                <th>Customer ID</th>
                 <th>Name</th>
                 <th>Phone</th>
                 <th>Email</th>
+                <th>Customer FK</th>
+                <th>Address</th>
+                <th>City</th>
+                <th>Zip</th>
             </tr>
             </thead>
             <tbody>
-            {% for info in info_list %}
+           {% for info in info_list %}
                 <tr>
-                    <td>{{ info.id }}</td>
-                    <td>{{ info.name }}</td>
-                    <td>{{ info.phone }}</td>
-                    <td> {{ info.email }} </td>
-            {% endfor %}
-            {% for add in address_list %}
-                    <td>{{ add.street }}</td>
-                    <td>{{ add.city }}</td>
-                    <td> {{ add.zip_code }} </td>
+                    <td>{{ info.customer_id }}</td>
+                    <td>{{ info.customer.name }}</td>
+                    <td>{{ info.customer.phone }}</td>
+                    <td>{{ info.customer.email }}</td>
+                    <td>{{ info.customer }}</td>
+                    <td>{{ info.street }}</td>
+                    <td>{{ info.city }}</td>
+                    <td>{{ info.zip_code }}</td>
                 </tr>
             {% endfor %}
             </tbody>

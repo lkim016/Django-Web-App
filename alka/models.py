@@ -17,7 +17,7 @@ class CustomerInfo(models.Model):
         #return f"'{self.message}' logged on {date.strftime('%A, %d %B, %Y at %X')}"
 
 class DeliveryAddress(models.Model):
-   customer_id = models.ForeignKey('CustomerInfo', on_delete = models.CASCADE)
+   customer = models.ForeignKey('CustomerInfo', on_delete = models.CASCADE)
    street = models.CharField(blank = True, max_length = 35)
    city = models.CharField(blank = True, max_length = 15) # change this to a selection with the cities from a list
    zip_code = models.CharField(blank = True, max_length = 5) # have this autofill after the city is selected
