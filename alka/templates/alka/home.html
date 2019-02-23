@@ -14,23 +14,32 @@ Home
                 <th>Name</th>
                 <th>Phone</th>
                 <th>Email</th>
-                <th>Customer FK</th>
                 <th>Address</th>
                 <th>City</th>
                 <th>Zip</th>
+                <th>Quantity</th>
+                <th>Bottle Type</th>
+                <th>Deposit $$$</th>
             </tr>
             </thead>
             <tbody>
            {% for info in info_list %}
                 <tr>
-                    <td>{{ info.customer_id }}</td>
-                    <td>{{ info.customer.name }}</td>
-                    <td>{{ info.customer.phone }}</td>
-                    <td>{{ info.customer.email }}</td>
-                    <td>{{ info.customer }}</td>
-                    <td>{{ info.street }}</td>
-                    <td>{{ info.city }}</td>
-                    <td>{{ info.zip_code }}</td>
+                    <td>{{ info.id }}</td>
+                    <td>{{ info.name }}</td>
+                    <td>{{ info.phone }}</td>
+                    <td>{{ info.email }}</td>
+                    <!-- https://stackoverflow.com/questions/43187327/django-get-data-from-foreign-key -->
+                    {% for del in info.DelCustID.all %}
+                    <td>{{ del.street }}</td>
+                    <td>{{ del.city }}</td>
+                    <td>{{ del.zip_code }}</td>
+                    {% endfor %}
+                    {% for del in info.DepCustID.all %}
+                    <td>{{ del.quantity }}</td>
+                    <td>{{ del.bottle_type }}</td>
+                    <td>{{ del.deposit }}</td>
+                    {% endfor %}
                 </tr>
             {% endfor %}
             </tbody>

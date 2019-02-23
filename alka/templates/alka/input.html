@@ -23,9 +23,97 @@
     {% endfor %}
 </div>
 
+<div class="form-group row">
+  {% for field in dep_form.visible_fields %}
+  <div class="col-xs-3">
+    {{ field.label_tag }}
+    {{ field }}
+  </div>
+  {% endfor %}
+</div>
+
 <button type="submit" class="save btn btn-default">Save</button>
 </form>
 
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+  <script>
+    $("#id_country").change(function () {
+      var url = $("#personForm").attr("data-cities-url");  // get the url of the `load_cities` view
+      var countryId = $(this).val();  // get the selected country ID from the HTML input
+
+      $.ajax({                       // initialize an AJAX request
+        url: url,                    // set the url of the request (= localhost:8000/hr/ajax/load-cities/)
+        data: {
+          'country': countryId       // add the country id to the GET parameters
+        },
+        success: function (data) {   // `data` is the return of the `load_cities` view function
+          $("#id_city").html(data);  // replace the contents of the city input with the data that came from the server
+        }
+      });
+
+    });
+  </script>
+
 {% endblock %}
+
+
+
+
+
+
+<!--
+ <h1>Delivery Customer Information</h1>
+  <div class="form-group row">
+        <div class="col-xs-3">
+          <label for="delivery-name">Name:</label>
+          <input class="form-control" id="delivery-name" type="text">
+        </div>
+        <div class="col-xs-3">
+          <label for="ex2">Phone:</label>
+          <input class="form-control" id="ex2" type="text">
+        </div>
+        <div class="col-xs-3">
+          <label for="ex2">Email:</label>
+          <input class="form-control" id="ex2" type="text">
+        </div>
+    </div>
+
+    <div class="form-group row">
+        <div class="col-xs-3">
+          <label for="ex2">Address:</label>
+          <input class="form-control" id="ex2" type="text">
+        </div>
+        <div class="col-xs-3">
+          <label for="ex2">City:</label>
+          <input class="form-control" id="ex2" type="text">
+        </div>
+        <div class="col-xs-3">
+          <label for="ex2">Zip:</label>
+          <input class="form-control" id="ex2" type="text">
+        </div>
+    </div>
+</div>
+<div class="container-fluid">
+        <h1>Delivery Customer Deposit</h1>
+        <div class="form-group row">
+              <div class="col-xs-3">
+                <label for="ex2">Quantity:</label>
+                <input class="form-control" id="ex2" type="text">
+              </div>
+              <div class="col-xs-3">
+                            <label for="sel1">Bottle Type:</label>
+                            <select class="form-control" id="sel1">
+                              <option>1</option>
+                              <option>2</option>
+                              <option>3</option>
+                              <option>4</option>
+                            </select>
+              </div>
+              <div class="col-xs-3">
+                <label for="ex2">Deposit:</label>
+                <input class="form-control" id="ex2" type="text">
+              </div>
+          </div>
+        -->
 
         
